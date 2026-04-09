@@ -24,7 +24,7 @@ export const ForgotPassword = () => {
         return ()=>{
             dispatch(clearForgotPasswordError())
         }
-    },[error])
+    },[error,dispatch])
 
     useEffect(()=>{
         if(status==='fullfilled'){
@@ -33,13 +33,13 @@ export const ForgotPassword = () => {
         return ()=>{
             dispatch(clearForgotPasswordSuccessMessage())
         }
-    },[status])
+    },[status,successMessage?.message,dispatch])
 
     useEffect(()=>{
         return ()=>{
             dispatch(resetForgotPasswordStatus())
         }
-    },[])
+    },[dispatch])
 
     const handleForgotPassword=async(data)=>{
         dispatch(forgotPasswordAsync(data))

@@ -1,9 +1,9 @@
+[build]
+  base = "frontend"
+  command = "CI= npm install --legacy-peer-deps && npm run build"
+  publish = "frontend/build"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[build]
-  base = "frontend"
-  command = "npm install --legacy-peer-deps && npm run build"
-  publish = "build"

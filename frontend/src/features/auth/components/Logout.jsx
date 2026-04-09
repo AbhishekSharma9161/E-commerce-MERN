@@ -10,7 +10,7 @@ export const Logout = () => {
 
     useEffect(()=>{
         dispatch(logoutAsync())
-    },[])
+    },[dispatch])
 
     useEffect(()=>{
         if(!loggedInUser){
