@@ -1,176 +1,141 @@
-## MERN Ecommerce: A Seamless Shopping Experience Powered by the MERN Stack, Redux Toolkit, and Material UI
+# MERN E-Commerce Platform
 
+A full-stack e-commerce application built with the MERN stack, Redux Toolkit, and Material UI.
 
-**MERN Ecommerce** is a full-stack application designed to transform your online shopping experience. Built with the MERN stack (MongoDB, Express.js, React, Node.js), it leverages Redux Toolkit for efficient state management and Material UI for a sleek, user-friendly interface. This project offers a robust platform for both users and admins, packed with essential features for a seamless experience.
+**Live Demo:** [mernecommerceful.netlify.app](https://mernecommerceful.netlify.app)  
+**Backend API:** [e-commerce-mern-paji.onrender.com](https://e-commerce-mern-paji.onrender.com)
 
 ![ecommerce-homepage](https://github.com/RishiBakshii/mern-ecommerce/blob/main/frontend/src/assets/images/front.png?raw=true)
-<!-- ![ecommerce-banner](https://github.com/RishiBakshii/mern-ecommerce/blob/main/frontend/src/assets/images/banner4.jpg?raw=true) -->
-![ecommerce-banner](https://github.com/RishiBakshii/mern-ecommerce/blob/main/frontend/src/assets/images/banner3.jpg?raw=true)
 
+---
 
-# **Features**
+## Features
 
-### **User:**
-- **Product Reviews:**
-  - Write, edit, and delete reviews.
-  - Instant updates on ratings and star percentages.
-  
-- **Wishlist:**
-  - Add, remove, and annotate products with personalized notes.
-  
-- **Order Management:**
-  - Create new orders and view order history.
-  
-- **Profile Management:**
-  - Manage email, username, and multiple addresses.
-  
-- **Shopping Cart:**
-  - Add products, adjust quantities, and view subtotals.
+### User
+- Secure signup, login, OTP email verification, and password reset
+- Browse products with filters by category, brand, and price
+- Add to cart, adjust quantities, and checkout
+- Wishlist with personal notes
+- Order history and order tracking
+- Profile management with multiple saved addresses
+- Product reviews — write, edit, delete with live rating updates
 
-### **Admin:**
-- **Product Management:**
-  - Add, edit, delete, and soft-delete products.
-  - Manage product attributes like name and stock.
-  
-- **Order Management:**
-  - View and update order details and status.
+### Admin
+- Add, edit, soft-delete products
+- Manage orders and update order status
+- Dashboard with overview stats
 
-### **Security & User Experience:**
-- **Secure Authentication:**
-  - Login, signup, OTP verification, password reset, and logout.
+---
 
-- **Intuitive Interface:**
-  - Powered by Material UI for a visually appealing and user-friendly experience.
+## Tech Stack
 
-### **Scalability:**
-- **Built for Growth:**
-  - Scalable architecture to handle increasing user demands.
+| Layer | Tech |
+|---|---|
+| Frontend | React, Redux Toolkit, Material UI, Framer Motion |
+| Backend | Node.js, Express.js |
+| Database | MongoDB, Mongoose |
+| Auth | JWT, HTTP-only cookies, bcrypt |
+| Email | Nodemailer (Gmail SMTP) |
+| Deployment | Netlify (frontend), Render (backend), MongoDB Atlas |
 
+---
 
-# **Project Setup**
+## Project Setup
 
 ### Prerequisites
-- Node.js ( version v21.1.0 or later )
-- MongoDB installed and running locally
+- Node.js v18+
+- MongoDB (local or Atlas)
 
-### Clone the project
+### Clone
 
 ```bash
-  git clone https://github.com/RishiBakshii/mern-ecommerce.git
+git clone https://github.com/AbhishekSharma9161/E-commerce-MERN.git
+cd E-commerce-MERN
 ```
 
-### Navigate to the project directory
+### Install Dependencies
 
 ```bash
-  cd mern-ecommerce
-```
-
-### Install dependencies for frontend and backend separately
-**Tip:** To efficiently install dependencies for both frontend and backend simultaneously, use split terminals.
-
-Install frontend dependencies
-```bash
-cd frontend
+# Backend
+cd backend
 npm install
+
+# Frontend
+cd ../frontend
+npm install --legacy-peer-deps
 ```
 
-Install backend dependencies
+### Environment Variables
+
+**backend/.env**
+```env
+MONGO_URI=your_mongodb_connection_string
+ORIGIN=http://localhost:3000
+JWT_SECRET=your_jwt_secret
+JWT_EXPIRY=7d
+COOKIE_EXPIRATION_DAYS=7
+OTP_EXPIRY=10
+OTP_EXPIRATION_TIME=600000
+PASSWORD_RESET_TOKEN_EXPIRY=15
+PASSWORD_RESET_TOKEN_EXPIRATION=900000
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+EMAIL=your_email@gmail.com
+PASSWORD=your_gmail_app_password
+PRODUCTION=false
+```
+
+**frontend/.env**
+```env
+REACT_APP_BASE_URL=http://localhost:8000
+```
+
+### Seed Database
 
 ```bash
 cd backend
-npm install
+node seed/seed.js
 ```
 
+### Run
 
-### Environment Variables
-**Backend**
-- Create a `.env` file in the `backend` directory.
-- Add the following variables with appropriate values
 ```bash
-# Database connection string
-MONGO_URI="mongodb://localhost:27017/your-database-name"
+# Backend (terminal 1)
+cd backend
+npm run dev
 
-# Frontend URL (adjust if needed)
-ORIGIN="http://localhost:3000"
-
-# Email credentials for sending password resets and OTPs
-EMAIL="your-email@example.com"
-PASSWORD="your-email-password"
-
-# Token and cookie expiration settings
-LOGIN_TOKEN_EXPIRATION="30d"  # Days
-OTP_EXPIRATION_TIME="120000"  # Milliseconds
-PASSWORD_RESET_TOKEN_EXPIRATION="2m"  # Minutes
-COOKIE_EXPIRATION_DAYS="30"    # Days
-
-# Secret key for jwt security
-SECRET_KEY="your-secret-key"
-
-# Environment (production/development)
-PRODUCTION="false" # Initially set to false for development
+# Frontend (terminal 2)
+cd frontend
+npm start
 ```
 
-**Frontend**
-- Create a `.env` file in the `frontend` directory
-- Add the following variable:
-```bash
-# Backend URL (adjust if needed)
-REACT_APP_BASE_URL="http://localhost:8000" 
-```
-
-**Important**
-- Replace all placeholders (e.g., your_database_name, your_email) with your actual values.
-- Exclude the `.env` file from version control to protect sensitive information.
-
-### Data seeding
-- **Get started quickly with pre-populated data**: Populate your database with sample users, products, reviews, and carts, enabling you to test functionalities without manual data entry.
-
-**Steps**:
-- Open a new terminal window.
-- Navigate to the `backend` directory: `cd backend`
-- Run the seeding script: `npm run seed` ( This script executes the `seed.js` file within the `seed` subdirectory equivalent to running `node seed/seed.js` )
-### Running Development Servers
-
-**Important:**
-
-- **Separate terminals**: Run the commands in separate terminal windows or use `split terminal` to avoid conflicts.
-- **Nodemon required**: Ensure you have `nodemon` installed globally to run the backend development servers using `npm run dev`. You can install it globally using `npm install -g nodemon`.
-
-#### Start the backend server
-- Navigate to the `backend` directory: `cd backend`
-- Start the server: `npm run dev` (or npm start)
-- You should see a message indicating the server is running, usually on port 8000.
-     
-#### Start the frontend server:
-- Navigate to the `frontend` directory: `cd frontend`
-- Start the server: `npm start`
-- You should see a message indicating the server is running, usually on port 3000.
-
-### Login with demo account (Optional)
-- After successfully seeding the database, you can now explore the application's functionalities using pre-populated sample data.
-- here are the `login credentials`
-```bash
-  email: demo@gmail.com
-  pass: helloWorld@123
-```
-
-- **Please Note**: While the demo account provides a convenient way to explore many features, it has some limitations:
-    - **Password Reset and OTP Verification**: Due to security reasons, the demo account uses a non-real email address. Therefore, password reset and OTP verification functionalities are not available for this account.
-
-    **What this means**:
-    - You cannot request a password reset or receive verification codes on the demo email address.
-    - To test password reset and OTP verification flows, you need to create a genuine account with a valid email address.
-
-    **What to do?**
-    - If you're primarily interested in exploring other functionalities like wishlist, cart, and order history, the demo account is sufficient.
-    - To test password reset and OTP verification, create a personal account with a valid email address.
-### Accessing the Application
-Once both servers are running, you can access them at the following URL's:
-- Backend: http://localhost:8000
 - Frontend: http://localhost:3000
+- Backend: http://localhost:8000
 
-## **Bonus**
-Don't forget to star the repository and share your feedback!✨
+### Demo Account
 
-## Authors
-- [@RishiBakshii](https://github.com/RishiBakshii)
+```
+email: demo@gmail.com
+password: helloWorld@123
+```
+
+> Note: OTP verification and password reset require a real email account.
+
+---
+
+## Resume Snippet
+
+```latex
+\resumeProjectHeading
+  {\textbf{Full Stack E-Commerce Platform} $|$
+   \emph{React, Node.js, MongoDB, Express, Redux Toolkit} $|$
+   \href{https://github.com/AbhishekSharma9161/E-commerce-MERN}{\underline{GitHub}} $|$
+   \href{https://mernecommerceful.netlify.app}{\underline{Live}}
+  }{}
+  \resumeItemListStart
+    \resumeItem{Built a full-stack MERN e-commerce app with JWT authentication, OTP email verification, and secure HTTP-only cookie sessions.}
+    \resumeItem{Implemented product browsing with category/brand/price filters, shopping cart, wishlist, and order management.}
+    \resumeItem{Developed an admin dashboard for product CRUD, soft-delete, and real-time order status updates.}
+    \resumeItem{Integrated Nodemailer for OTP and password reset emails; deployed frontend on Netlify and backend on Render with MongoDB Atlas.}
+  \resumeItemListEnd
+```
